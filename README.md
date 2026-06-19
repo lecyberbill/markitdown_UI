@@ -1,5 +1,8 @@
 # MarkItDown Web
 
+> **Fork de [microsoft/markitdown](https://github.com/microsoft/markitdown)**  
+> Interface web par-dessus l'outil de conversion de fichiers en Markdown.
+
 Convertissez vos fichiers (PDF, Word, Excel, PowerPoint, images, audio, HTML, etc.) en Markdown directement depuis votre navigateur.
 
 ## Démarrage rapide
