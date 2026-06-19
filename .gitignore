@@ -166,3 +166,10 @@ cython_debug/
 src/.DS_Store
 .DS_Store
 .cursorrules
+
+# g?n?r? par nos outils
+*.docx
+docx-eq-render/output_*
+docx-eq-render/*_pdfs/
+docx-eq-render/*_svgs/
+latex_test.txt
