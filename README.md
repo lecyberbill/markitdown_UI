@@ -41,7 +41,24 @@ markitdown/
 
 ## Formats supportés
 
-PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx, .xls), images (jpg, png, gif, webp, bmp), audio (mp3, wav, m4a), HTML, CSV, JSON, XML, EPUB, ZIP, Outlook (.msg), et plus.
+| Format | Extension |
+|---|---|
+| PDF | `.pdf` |
+| Word | `.docx` |
+| PowerPoint | `.pptx` |
+| Excel | `.xlsx`, `.xls` |
+| Images | `.jpg`, `.png`, `.gif`, `.webp`, `.bmp` |
+| Audio | `.mp3`, `.wav`, `.m4a` |
+| HTML | `.html`, `.htm` |
+| Texte | `.csv`, `.json`, `.xml`, `.txt` |
+| EPUB | `.epub` |
+| Outlook | `.msg` |
+| ZIP | `.zip` |
+| Jupyter | `.ipynb` |
+| YouTube | URLs |
+| RSS / Wikipedia / Bing | URLs |
+
+et plus via plugins.
 
 ## API
 
