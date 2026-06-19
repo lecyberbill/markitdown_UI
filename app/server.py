@@ -1,8 +1,8 @@
 import os
 import tempfile
 from pathlib import Path
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import HTMLResponse, PlainTextResponse
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from markitdown import MarkItDown, UnsupportedFormatException
 
@@ -44,6 +44,17 @@ async def convert(file: UploadFile = File(...)):
         return {"filename": file.filename, "text": result.markdown}
     except HTTPException:
         raise
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+@app.post("/convert_url")
+async def convert_url(url: str = Form(...)):
+    try:
+        result = md.convert(url)
+        return {"url": url, "text": result.markdown}
+    except UnsupportedFormatException:
+        raise HTTPException(400, "URL non supportée")
     except Exception as e:
         raise HTTPException(500, str(e))
 

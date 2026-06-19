@@ -150,6 +150,10 @@ copyBtn.addEventListener("click", async () => {
 downloadBtn.addEventListener("click", () => {
   if (!currentFile) return;
   const name = currentFile.name.replace(/\.[^.]+$/, "") + ".md";
+  downloadText(name);
+});
+
+function downloadText(name) {
   const blob = new Blob([output.textContent], { type: "text/markdown" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -157,4 +161,42 @@ downloadBtn.addEventListener("click", () => {
   a.download = name;
   a.click();
   URL.revokeObjectURL(url);
-});
+}
+
+// ── URL converter ──
+const urlInput = document.getElementById("url-input");
+const urlBtn = document.getElementById("url-btn");
+
+urlBtn.addEventListener("click", () => convertUrl());
+urlInput.addEventListener("keydown", (e) => { if (e.key === "Enter") convertUrl(); });
+
+async function convertUrl() {
+  const url = urlInput.value.trim();
+  if (!url) return;
+
+  spinner.classList.remove("hidden");
+  result.classList.add("hidden");
+  error.classList.add("hidden");
+
+  const form = new FormData();
+  form.append("url", url);
+
+  try {
+    const res = await fetch("/convert_url", { method: "POST", body: form });
+    spinner.classList.add("hidden");
+
+    if (!res.ok) {
+      const detail = (await res.json()).detail || `Erreur ${res.status}`;
+      showError(detail);
+      return;
+    }
+
+    const data = await res.json();
+    output.textContent = data.text;
+    result.classList.remove("hidden");
+    currentFile = { name: new URL(url).hostname + ".md" };
+  } catch (err) {
+    spinner.classList.add("hidden");
+    showError("Erreur de connexion au serveur.");
+  }
+}

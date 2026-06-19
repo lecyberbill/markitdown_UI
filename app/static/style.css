@@ -110,6 +110,24 @@ main {
   font-size: .85rem;
 }
 
+/* URL section */
+#url-section { margin-top: 1.5rem; text-align: center; }
+.url-sep { color: var(--text-dim); font-size: .85rem; margin-bottom: .8rem; position: relative; }
+.url-sep span { background: var(--bg); padding: 0 .8rem; }
+#url-box { display: flex; gap: .5rem; }
+#url-input {
+  flex: 1; padding: .6rem .8rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--text); font-size: .9rem; outline: none;
+}
+#url-input:focus { border-color: var(--accent); }
+#url-btn {
+  padding: .6rem 1.2rem;
+  background: var(--accent); color: #fff; border: none; border-radius: var(--radius);
+  font-size: .9rem; cursor: pointer; white-space: nowrap;
+}
+#url-btn:hover { background: var(--accent-hover); }
+
 #change-btn {
   background: none;
   border: 1px solid var(--border);
